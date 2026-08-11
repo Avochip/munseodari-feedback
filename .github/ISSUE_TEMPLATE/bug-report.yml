@@ -1,0 +1,180 @@
+name: "오류 제보"
+description: "작동하지 않거나 예상과 다른 결과를 알려주세요."
+title: "[오류] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        제보해 주셔서 감사합니다.
+
+        **이곳은 누구나 볼 수 있는 공개 게시판입니다.**
+        실제 문서, 개인정보, 기밀정보를 쓰거나 첨부하지 마세요. 샘플이 꼭 필요하면 처음부터 허위 내용으로 만든 더미 파일만 사용해 주세요.
+
+  - type: checkboxes
+    id: safe-to-publish
+    attributes:
+      label: "공개 게시 확인"
+      options:
+        - label: "이슈의 제목, 내용, 댓글과 첨부파일이 인터넷에 공개되는 것을 확인했습니다."
+          required: true
+        - label: "실제 업무·고객·기관 문서, 개인정보, 기밀정보를 입력하거나 첨부하지 않았습니다."
+          required: true
+        - label: "파일이 필요하다면 처음부터 허위 내용으로 만든 더미 파일만 사용했습니다."
+          required: true
+
+  - type: checkboxes
+    id: duplicate-check
+    attributes:
+      label: "기존 제보 확인"
+      options:
+        - label: "비슷한 오류가 이미 등록되어 있는지 기존 이슈를 검색했습니다."
+          required: true
+
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: "어디에서 문제가 생겼나요?"
+      options:
+        - "Chrome 확장 프로그램"
+        - "문서다리 웹페이지"
+        - "변환한 파일의 결과"
+        - "설치 또는 업데이트"
+        - "잘 모르겠습니다"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source-format
+    attributes:
+      label: "선택한 원본은 무엇인가요?"
+      options:
+        - "HWP"
+        - "HWPX"
+        - "DOCX"
+        - "글자를 선택할 수 있는 PDF"
+        - "스캔 PDF"
+        - "JPG·PNG 문서 사진"
+        - "새 문서"
+        - "파일을 선택하기 전에 문제가 생김"
+        - "잘 모르겠습니다"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target-format
+    attributes:
+      label: "어떤 결과를 얻으려고 했나요?"
+      options:
+        - "HWP 파일"
+        - "HWPX 파일"
+        - "DOCX 파일"
+        - "PDF 파일"
+        - "문서 내용 편집"
+        - "해당 없음"
+        - "잘 모르겠습니다"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: last-step
+    attributes:
+      label: "문제가 생기기 직전 단계는 무엇인가요?"
+      options:
+        - "확장 프로그램 설치 또는 실행"
+        - "문서다리 화면 열기"
+        - "파일 선택"
+        - "PDF·사진 글자 인식(OCR)"
+        - "문서 편집"
+        - "변환 시작 또는 진행 중"
+        - "변환 완료"
+        - "다운로드"
+        - "다운로드한 파일 열기 또는 확인"
+        - "잘 모르겠습니다"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: symptom
+    attributes:
+      label: "어떤 문제가 생겼나요?"
+      options:
+        - "버튼이나 화면이 반응하지 않음"
+        - "진행이 멈춤"
+        - "오류 메시지가 표시됨"
+        - "변환은 완료됐지만 다운로드되지 않음"
+        - "다운로드한 파일이 열리지 않음"
+        - "글자·표·그림·쪽 배치가 달라짐"
+        - "글자를 잘못 읽음(OCR 오탈자)"
+        - "설치 또는 실행 문제"
+        - "그 밖의 문제"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: "같은 문제가 얼마나 자주 생기나요?"
+      options:
+        - "한 번만 발생"
+        - "가끔 발생"
+        - "시도할 때마다 발생"
+        - "확인하지 못함"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: operating-system
+    attributes:
+      label: "사용 중인 운영체제는 무엇인가요?"
+      options:
+        - "Windows"
+        - "macOS"
+        - "ChromeOS"
+        - "Linux"
+        - "모바일"
+        - "그 밖의 운영체제"
+        - "잘 모르겠습니다"
+    validations:
+      required: true
+
+  - type: input
+    id: chrome-version
+    attributes:
+      label: "Chrome 버전 (선택)"
+      description: "Chrome 메뉴 → 도움말 → Chrome 정보에서 확인할 수 있습니다."
+      placeholder: "예: 140.0.7339.81"
+
+  - type: input
+    id: extension-version
+    attributes:
+      label: "문서다리 확장 프로그램 버전 (선택)"
+      description: "chrome://extensions의 문서다리 항목에서 확인할 수 있습니다."
+      placeholder: "예: 0.1.11"
+
+  - type: input
+    id: error-code
+    attributes:
+      label: "오류 코드 (선택)"
+      description: "화면에 표시된 경우에만 적어 주세요. 파일명이나 저장 경로는 쓰지 마세요."
+      placeholder: "예: CONVERT_TIMEOUT"
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "문제가 생긴 과정을 짧게 적어 주세요."
+      description: "파일명, 사용자 이름, 저장 경로와 문서 내용은 쓰지 말고 1~3단계로 적어 주세요."
+      placeholder: |
+        예:
+        1. HWPX 파일을 선택했습니다.
+        2. PDF 저장을 눌렀습니다.
+        3. 진행 화면이 중간에서 멈췄습니다.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: "추가 정보 (선택)"
+      description: "공개해도 안전한 오류 문구나 더미 파일의 스크린샷만 추가해 주세요. 실제 문서는 첨부하지 마세요."
+      placeholder: "문제 확인에 도움이 될 공개 가능한 정보가 있으면 적어 주세요."

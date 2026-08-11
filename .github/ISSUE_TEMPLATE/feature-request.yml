@@ -1,0 +1,140 @@
+name: "기능 제안"
+description: "문서다리에 추가되거나 개선되면 좋을 기능을 알려주세요."
+title: "[제안] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        의견을 보내주셔서 감사합니다.
+
+        **이곳은 누구나 볼 수 있는 공개 게시판입니다.**
+        실제 문서, 개인정보, 회사·기관명, 고객정보나 기밀정보를 사례로 올리지 마세요. 설명이 필요하면 허위 이름과 허위 내용으로 만든 예시만 사용해 주세요.
+
+  - type: checkboxes
+    id: safe-to-publish
+    attributes:
+      label: "공개 게시 확인"
+      options:
+        - label: "이슈의 제목, 내용, 댓글과 첨부파일이 인터넷에 공개되는 것을 확인했습니다."
+          required: true
+        - label: "실제 문서, 개인정보, 기밀정보를 입력하거나 첨부하지 않았습니다."
+          required: true
+        - label: "예시가 필요하다면 처음부터 허위 내용으로 만든 더미 자료만 사용했습니다."
+          required: true
+
+  - type: checkboxes
+    id: duplicate-check
+    attributes:
+      label: "기존 제안 확인"
+      options:
+        - label: "비슷한 제안이 이미 등록되어 있는지 기존 이슈를 검색했습니다."
+          required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: "어떤 부분에 대한 제안인가요?"
+      options:
+        - "지원 파일 형식"
+        - "변환 결과의 글자·표·그림·쪽 배치"
+        - "PDF·사진 글자 인식(OCR)"
+        - "속도와 안정성"
+        - "사용 방법과 화면"
+        - "다운로드와 파일 관리"
+        - "설치와 업데이트"
+        - "접근성"
+        - "개인정보와 보안"
+        - "그 밖의 개선"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: "어느 단계와 관련된 제안인가요?"
+      options:
+        - "확장 프로그램 설치 또는 실행"
+        - "문서다리 화면 열기"
+        - "파일 선택"
+        - "글자 인식(OCR)"
+        - "문서 편집"
+        - "변환 설정 또는 진행"
+        - "변환 결과 확인"
+        - "다운로드"
+        - "전체 과정"
+        - "잘 모르겠습니다"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: related-format
+    attributes:
+      label: "관련된 파일 형식이 있나요?"
+      description: "여러 개를 고를 수 있습니다. 특정 형식과 관계없다면 선택하지 않아도 됩니다."
+      multiple: true
+      options:
+        - "HWP"
+        - "HWPX"
+        - "DOCX"
+        - "PDF"
+        - "JPG·PNG 문서 사진"
+
+  - type: dropdown
+    id: usage-frequency
+    attributes:
+      label: "이 기능이 얼마나 자주 필요할 것 같나요?"
+      options:
+        - "거의 매일"
+        - "일주일에 1~몇 번"
+        - "한 달에 1~몇 번"
+        - "그보다 드물게"
+        - "직접 사용해 보지는 않았지만 제안함"
+        - "잘 모르겠습니다"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: current-workaround
+    attributes:
+      label: "현재는 어떻게 처리하고 있나요?"
+      options:
+        - "현재 방법으로는 처리할 수 없음"
+        - "다른 프로그램이나 서비스를 사용함"
+        - "여러 단계를 거쳐 처리함"
+        - "결과를 수작업으로 수정함"
+        - "해당 없음 또는 잘 모르겠음"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: expected-benefit
+    attributes:
+      label: "이 제안이 반영되면 가장 좋아지는 점은 무엇인가요?"
+      options:
+        - "더 많은 파일을 처리할 수 있음"
+        - "변환 결과가 더 정확해짐"
+        - "처리 시간이 줄어듦"
+        - "실수나 오류가 줄어듦"
+        - "사용 방법이 쉬워짐"
+        - "접근성이 좋아짐"
+        - "개인정보 보호가 강화됨"
+        - "그 밖의 효과"
+    validations:
+      required: true
+
+  - type: textarea
+    id: requested-improvement
+    attributes:
+      label: "원하는 개선을 한 문장으로 적어 주세요."
+      description: "실제 회사명, 사람 이름이나 문서 내용을 쓰지 말고 원하는 동작을 중심으로 적어 주세요."
+      placeholder: "예: 여러 파일을 한 번에 선택해 순서대로 변환할 수 있으면 좋겠습니다."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: "추가 설명 (선택)"
+      description: "공개해도 안전한 더미 예시나 참고 설명만 적어 주세요."
+      placeholder: "제안을 이해하는 데 도움이 될 공개 가능한 정보가 있으면 적어 주세요."
